@@ -1,1 +1,2 @@
 c:\users\dques\documents\visual studio 2015\Projects\RPSLS\RPSLS\bin\Debug\RPSLS.exe.config
+c:\users\dques\documents\visual studio 2015\Projects\RPSLS\RPSLS\obj\Debug\RPSLS.csprojResolveAssemblyReference.cache

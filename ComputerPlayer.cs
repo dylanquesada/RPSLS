@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace RPSLS
 {
-    class Program
+    class ComputerPlayer : Player
     {
-        static void Main(string[] args)
-        {
-
-        }
+        GetChoice
     }
 }
