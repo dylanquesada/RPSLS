@@ -20,11 +20,7 @@ namespace RPSLS
 
         }
         // member methods
-//        public int SelectChoice()
-//        {
-//            int choice;           
-//            return choice;
-//        }
+        public abstract int SelectChoice();
         
 
     }

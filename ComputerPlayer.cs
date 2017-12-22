@@ -18,11 +18,11 @@ namespace RPSLS
         }
 
         //member methods
-        public int Turn()
+        public override int SelectChoice()
         {
-            int result;
-            result = rnd.Next(1, 6);
-            return result;
+            int choice;
+            choice = rnd.Next(1, 6);
+            return choice;
         }
 
     }

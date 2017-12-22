@@ -8,5 +8,18 @@ namespace RPSLS
 {
     class UserPlayer : Player
     {
+        // member variables
+
+        // constructor
+
+        // member methods
+        public override int SelectChoice()
+        {
+            int choice;
+            choice = Console.Read();
+            return choice;
+        }
+
+
     }
 }
