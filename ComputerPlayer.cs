@@ -8,6 +8,22 @@ namespace RPSLS
 {
     class ComputerPlayer : Player
     {
-        GetChoice
+        //member variables
+        public Random rnd;
+
+        //constructor
+        public ComputerPlayer()
+        {
+
+        }
+
+        //member methods
+        public int Turn()
+        {
+            int result;
+            result = rnd.Next(1, 6);
+            return result;
+        }
+
     }
 }

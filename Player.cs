@@ -8,15 +8,19 @@ namespace RPSLS
 {
     public abstract class Player
     {
-        List <string> choices = new List <string> ();
-            
-
+        
         public int choice;
         public int GetChoice()
         {
+            List<string> choices = new List<string>();
+            choices.Add("rock");
+            choices.Add("paper");
+            choices.Add("scissors");
+            choices.Add("lizard");
+            choices.Add("spock");
             return choice;
         }
-        public 
+        
 
     }
 }
