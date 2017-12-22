@@ -12,6 +12,9 @@ namespace RPSLS
         public List<string> choices = new List<string>();
         public Player playerone;
         public Player playertwo;
+        //(Rock, Paper, Scissors, Lizard, Spock)
+        public int numberOfChoices = 5;
+        
        
         // constructor 
         public Game()
@@ -49,17 +52,29 @@ namespace RPSLS
         {
             int playerOneChoice;
             int playerTwoChoice;
+            playerOneChoice = playerone.SelectChoice();
+            playerTwoChoice = playertwo.SelectChoice();
+            int indicator;
+            indicator = (numberOfChoices + (playerOneChoice - playerTwoChoice) % 5);
 
-            if(/*Player one wins*/)
+            if(indicator % 2 == 1)
             {
+                Console.WriteLine("{0} beats {1}! {2} wins!", 
+                    getChoiceString(playerOneChoice), 
+                    getChoiceString(playerTwoChoice), 
+                    playerone.name);
                 playerone.roundsWon++;
             }
-            else if(/*Player two wins*/)
+            else if(indicator % 2 == 0)
             {
+                Console.WriteLine("{0} beats {1}! {2} wins!",
+                    getChoiceString(playerTwoChoice),
+                    getChoiceString(playerOneChoice),
+                    playertwo.name);
                 playertwo.roundsWon++;
             }else
             {
-                //Tie -- nothing happens
+                Console.WriteLine("It's a draw! Shoot again!");
             }
         }
         public int GetUserInput()
