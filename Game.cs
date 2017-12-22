@@ -47,13 +47,16 @@ namespace RPSLS
         }
         public void CompareChoices()
         {
+            int playerOneChoice;
+            int playerTwoChoice;
+
             if(/*Player one wins*/)
             {
-                PlayerOneScore.score++;
+                playerone.roundsWon++;
             }
             else if(/*Player two wins*/)
             {
-                // PlayerTwoScore++;
+                playertwo.roundsWon++;
             }else
             {
                 //Tie -- nothing happens
@@ -63,15 +66,41 @@ namespace RPSLS
         {
             return Console.Read();
         }
-       
-            public void RunGame(int userInput)
+
+        public void CheckForWinner()
         {
-            int matchCounter = 0;
-            while (matchCounter < 3)
+            if(playerone.roundsWon >= 2)
             {
-              
-               
+                playerone.didWin = true;
             }
+            else if(playertwo.roundsWon >= 2)
+            {
+                playertwo.didWin = true;
+            }
+        }
+        public void DisplayWinnerMessage()
+        {
+            if (playerone.didWin)
+            {
+                Console.WriteLine("{0} wone with a score of {1}", playerone.name, playerone.roundsWon
+                    );
+            }
+            else
+            {
+                Console.WriteLine("{0} won with a score of {1}", playertwo.name, playertwo.roundsWon);
+            }
+        }
+        public void RunGame()
+        {
+            SetPlayers();
+            while (playerone.roundsWon < 2 && playertwo.roundsWon < 2)
+            {
+                playerone.SelectChoice();
+                playertwo.SelectChoice();
+                CompareChoices();
+                CheckForWinner();
+            }
+            DisplayWinnerMessage();
         }
     }
 }
