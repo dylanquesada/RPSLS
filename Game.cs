@@ -14,6 +14,7 @@ namespace RPSLS
         public Player playertwo;
         //(Rock, Paper, Scissors, Lizard, Spock)
         public int numberOfChoices = 5;
+        //Maybe change this to choices.Length?
         
        
         // constructor 
@@ -48,6 +49,18 @@ namespace RPSLS
             }
 
         }
+        public string GetChoiceString(int choice)
+        {
+            return choices[choice];
+        }
+        public void PopulateChoicesList()
+        {
+            choices.Add("Rock");
+            choices.Add("Paper");
+            choices.Add("Scissors");
+            choices.Add("Lizard");
+            choices.Add("Spock");
+        }
         public void CompareChoices()
         {
             int playerOneChoice;
@@ -60,20 +73,22 @@ namespace RPSLS
             if(indicator % 2 == 1)
             {
                 Console.WriteLine("{0} beats {1}! {2} wins!", 
-                    getChoiceString(playerOneChoice), 
-                    getChoiceString(playerTwoChoice), 
+                    GetChoiceString(playerOneChoice), 
+                    GetChoiceString(playerTwoChoice), 
                     playerone.name);
                 playerone.roundsWon++;
             }
             else if(indicator % 2 == 0)
             {
                 Console.WriteLine("{0} beats {1}! {2} wins!",
-                    getChoiceString(playerTwoChoice),
-                    getChoiceString(playerOneChoice),
+                    GetChoiceString(playerTwoChoice),
+                    GetChoiceString(playerOneChoice),
                     playertwo.name);
                 playertwo.roundsWon++;
             }else
             {
+                Console.WriteLine("{0} : {1}", playerone.name, GetChoiceString(playerOneChoice));
+                Console.WriteLine("{0} : {1}", playertwo.name, GetChoiceString(playerTwoChoice));
                 Console.WriteLine("It's a draw! Shoot again!");
             }
         }
