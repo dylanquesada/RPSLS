@@ -11,6 +11,11 @@ namespace RPSLS
         // member variables
 
         // constructor
+        public UserPlayer()
+        {
+            Console.WriteLine("What is this Player's Name?");
+            name = Console.ReadLine();
+        }
 
         // member methods
         public override int SelectChoice()
