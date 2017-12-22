@@ -16,11 +16,11 @@ namespace RPSLS
         public int numberOfChoices = 5;
         //Maybe change this to choices.Length?
         
-       
         // constructor 
         public Game()
         {
-            
+            PopulateChoicesList();
+            SetPlayers();
         }
         // member methods
         public void SetPlayers()
@@ -44,7 +44,6 @@ namespace RPSLS
 
                 default:
                     Console.WriteLine("Enter either 0 or 1");
-                    SetPlayers();
                     break;
             }
 
@@ -55,22 +54,36 @@ namespace RPSLS
         }
         public void PopulateChoicesList()
         {
+            
             choices.Add("Rock");
             choices.Add("Paper");
             choices.Add("Scissors");
-            choices.Add("Lizard");
             choices.Add("Spock");
-        }
-        public void CompareChoices()
-        {
-            int playerOneChoice;
-            int playerTwoChoice;
-            playerOneChoice = playerone.SelectChoice();
-            playerTwoChoice = playertwo.SelectChoice();
-            int indicator;
-            indicator = (numberOfChoices + (playerOneChoice - playerTwoChoice) % 5);
+            choices.Add("Lizard");
+            
 
-            if(indicator % 2 == 1)
+        }
+        public void DisplayChoices()
+        {
+            for (int i = 0; i < choices.Count; i++)
+            {
+                Console.WriteLine(i + ". For {0}", choices[i]);
+            }
+        }
+        public void CompareChoices(int choice1, int choice2)
+        {
+            int playerOneChoice = choice1;
+            int playerTwoChoice = choice2;
+            int indicator;
+            indicator = ((numberOfChoices + (playerOneChoice - playerTwoChoice)) % numberOfChoices);
+
+            if (indicator == 0)
+            {
+                Console.WriteLine("{0} : {1}", playerone.name, GetChoiceString(playerOneChoice));
+                Console.WriteLine("{0} : {1}", playertwo.name, GetChoiceString(playerTwoChoice));
+                Console.WriteLine("It's a draw! Shoot again!");
+            }
+            else if(indicator % 2 == 1)
             {
                 Console.WriteLine("{0} beats {1}! {2} wins!", 
                     GetChoiceString(playerOneChoice), 
@@ -85,16 +98,11 @@ namespace RPSLS
                     GetChoiceString(playerOneChoice),
                     playertwo.name);
                 playertwo.roundsWon++;
-            }else
-            {
-                Console.WriteLine("{0} : {1}", playerone.name, GetChoiceString(playerOneChoice));
-                Console.WriteLine("{0} : {1}", playertwo.name, GetChoiceString(playerTwoChoice));
-                Console.WriteLine("It's a draw! Shoot again!");
             }
         }
         public int GetUserInput()
         {
-            return Console.Read();
+            return Convert.ToInt32(Console.ReadLine());
         }
 
         public void CheckForWinner()
@@ -112,22 +120,21 @@ namespace RPSLS
         {
             if (playerone.didWin)
             {
-                Console.WriteLine("{0} wone with a score of {1}", playerone.name, playerone.roundsWon
-                    );
+                Console.WriteLine("{0} won!", playerone.name);
             }
             else
             {
-                Console.WriteLine("{0} won with a score of {1}", playertwo.name, playertwo.roundsWon);
+                Console.WriteLine("{0} won!", playertwo.name);
             }
         }
         public void RunGame()
         {
-            SetPlayers();
+            
             while (playerone.roundsWon < 2 && playertwo.roundsWon < 2)
             {
-                playerone.SelectChoice();
-                playertwo.SelectChoice();
-                CompareChoices();
+                DisplayChoices();
+                CompareChoices(playerone.SelectChoice(),
+                playertwo.SelectChoice());
                 CheckForWinner();
             }
             DisplayWinnerMessage();

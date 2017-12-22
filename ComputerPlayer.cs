@@ -14,14 +14,16 @@ namespace RPSLS
         //constructor
         public ComputerPlayer()
         {
-
+            name = "RPSLS Bot";
+            Console.WriteLine("Player Two is called {0}.", name);
         }
 
         //member methods
         public override int SelectChoice()
         {
             int choice;
-            choice = rnd.Next(1, 6);
+            rnd = new Random();
+            choice = rnd.Next(0, 5);
             return choice;
         }
 

@@ -13,15 +13,17 @@ namespace RPSLS
         // constructor
         public UserPlayer()
         {
-            Console.WriteLine("What is this Player's Name?");
+            Console.WriteLine("What is Player's Name?");
             name = Console.ReadLine();
         }
 
         // member methods
+
         public override int SelectChoice()
         {
             int choice;
-            choice = Console.Read();
+            
+            choice = Convert.ToInt32(Console.ReadLine());
             return choice;
         }
 

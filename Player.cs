@@ -10,18 +10,16 @@ namespace RPSLS
     {
         // member variables
         public string name;
-        public string score;
-        public int roundsWon;
+        public int roundsWon = 0;
         public bool didWin;
 
         // constructor
         public Player()
         {
-
+            
         }
         // member methods
         public abstract int SelectChoice();
-        
-
+       
     }
 }
