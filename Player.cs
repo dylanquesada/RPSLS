@@ -8,18 +8,23 @@ namespace RPSLS
 {
     public abstract class Player
     {
-        
-        public int choice;
-        public int GetChoice()
+        // member variables
+        public string name;
+        public string score;
+        public int roundsWon;
+        public bool didWin;
+
+        // constructor
+        public Player()
         {
-            List<string> choices = new List<string>();
-            choices.Add("rock");
-            choices.Add("paper");
-            choices.Add("scissors");
-            choices.Add("lizard");
-            choices.Add("spock");
-            return choice;
+
         }
+        // member methods
+//        public int SelectChoice()
+//        {
+//            int choice;           
+//            return choice;
+//        }
         
 
     }
