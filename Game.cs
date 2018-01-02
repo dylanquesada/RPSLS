@@ -25,6 +25,7 @@ namespace RPSLS
             Console.WriteLine("How many computers would you like?");
             Console.WriteLine("0 computers = human player vs. human player");
             Console.WriteLine("1 computers = human player vs. computer player");
+            Console.WriteLine("Enter either '0' or '1'.");
             int userInput = GetUserInput();
             switch (userInput)
             {
@@ -42,10 +43,8 @@ namespace RPSLS
                 default:
                     Console.WriteLine("Enter either 0 or 1");
                     SetPlayers();
-                    break;
-                    
+                    break;       
             }
-
         }
         public string GetChoiceString(int choice)
         {
