@@ -10,11 +10,8 @@ namespace RPSLS
     {
         // member variables
         public List<string> choices = new List<string>();
-        public Player playerone;
-        public Player playertwo;
-        //(Rock, Paper, Scissors, Lizard, Spock)
-        
-        //Maybe change this to choices.Length?
+        public Player playerOne;
+        public Player playerTwo;
         
         // constructor 
         public Game()
@@ -33,13 +30,13 @@ namespace RPSLS
             {
                 case 0:
                     //Gameplay for p v p
-                    playerone = new UserPlayer();
-                    playertwo = new UserPlayer();
+                    playerOne = new UserPlayer();
+                    playerTwo = new UserPlayer();
                     break;
                 case 1:
                     //Gameplay for c v p
-                    playerone = new UserPlayer();
-                    playertwo = new ComputerPlayer();
+                    playerOne = new UserPlayer();
+                    playerTwo = new ComputerPlayer();
                     break;
 
                 default:
@@ -82,8 +79,8 @@ namespace RPSLS
 
             if (indicator == 0)
             {
-                Console.WriteLine("{0} : {1}", playerone.name, GetChoiceString(playerOneChoice));
-                Console.WriteLine("{0} : {1}", playertwo.name, GetChoiceString(playerTwoChoice));
+                Console.WriteLine("{0} : {1}", playerOne.name, GetChoiceString(playerOneChoice));
+                Console.WriteLine("{0} : {1}", playerTwo.name, GetChoiceString(playerTwoChoice));
                 Console.WriteLine("It's a draw! Shoot again!");
             }
             else if(indicator % 2 == 1)
@@ -91,16 +88,16 @@ namespace RPSLS
                 Console.WriteLine("{0} beats {1}! {2} wins!", 
                     GetChoiceString(playerOneChoice), 
                     GetChoiceString(playerTwoChoice), 
-                    playerone.name);
-                playerone.roundsWon++;
+                    playerOne.name);
+                playerOne.roundsWon++;
             }
             else if(indicator % 2 == 0)
             {
                 Console.WriteLine("{0} beats {1}! {2} wins!",
                     GetChoiceString(playerTwoChoice),
                     GetChoiceString(playerOneChoice),
-                    playertwo.name);
-                playertwo.roundsWon++;
+                    playerTwo.name);
+                playerTwo.roundsWon++;
             }
         }
         public int GetUserInput()
@@ -110,38 +107,38 @@ namespace RPSLS
 
         public void CheckForWinner()
         {
-            if(playerone.roundsWon >= 2)
+            if(playerOne.roundsWon >= 2)
             {
-                playerone.didWin = true;
+                playerOne.didWin = true;
             }
-            else if(playertwo.roundsWon >= 2)
+            else if(playerTwo.roundsWon >= 2)
             {
-                playertwo.didWin = true;
+                playerTwo.didWin = true;
             }
         }
         public void DisplayWinnerMessage()
         {
-            if (playerone.didWin)
+            if (playerOne.didWin)
             {
-                Console.WriteLine("{0} won!", playerone.name);
+                Console.WriteLine("{0} won!", playerOne.name);
             }
             else
             {
-                Console.WriteLine("{0} won!", playertwo.name);
+                Console.WriteLine("{0} won!", playerTwo.name);
             }
         }
         public void RunGame()
         {
             int tempChoice1;
             int tempChoice2;
-            while (playerone.roundsWon < 2 && playertwo.roundsWon < 2)
+            while (playerOne.roundsWon < 2 && playerTwo.roundsWon < 2)
             {
                 DisplayGameRules();
                 DisplayChoices();
-                Console.WriteLine("{0}'s Turn.", playerone.name);
-                tempChoice1 = playerone.SelectChoice();
-                Console.WriteLine("{0}'s Turn.", playertwo.name);
-                tempChoice2 = playertwo.SelectChoice();
+                Console.WriteLine("{0}'s Turn.", playerOne.name);
+                tempChoice1 = playerOne.SelectChoice();
+                Console.WriteLine("{0}'s Turn.", playerTwo.name);
+                tempChoice2 = playerTwo.SelectChoice();
                 
                 CompareChoices(tempChoice1, tempChoice2);
                 CheckForWinner();
