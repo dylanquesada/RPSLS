@@ -25,6 +25,11 @@ namespace RPSLS
             try
             {
                 choice = Convert.ToInt32(Console.ReadLine());
+                if(choice > 4 || choice < 0)
+                {
+                    Console.WriteLine("Error. Enter '0', '1', '2', '3', or '4'.");
+                    return SelectChoice();
+                }
                 return choice;
             }
             catch(Exception e)
