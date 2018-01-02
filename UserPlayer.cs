@@ -22,9 +22,18 @@ namespace RPSLS
         public override int SelectChoice()
         {
             int choice;
-            
-            choice = Convert.ToInt32(Console.ReadLine());
-            return choice;
+            try
+            {
+                choice = Convert.ToInt32(Console.ReadLine());
+                return choice;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error. Invalid Input. Please enter an integer '0 - 4'");
+                return SelectChoice();
+            }
+
+                
         }
 
 

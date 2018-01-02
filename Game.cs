@@ -44,7 +44,9 @@ namespace RPSLS
 
                 default:
                     Console.WriteLine("Enter either 0 or 1");
+                    SetPlayers();
                     break;
+                    
             }
 
         }
@@ -62,6 +64,10 @@ namespace RPSLS
             choices.Add("Lizard");
             
 
+        }
+        public void DisplayGameRules()
+        {
+            Console.WriteLine("Enter the number of the choice youd like:");
         }
         public void DisplayChoices()
         {
@@ -129,12 +135,18 @@ namespace RPSLS
         }
         public void RunGame()
         {
-            
+            int tempChoice1;
+            int tempChoice2;
             while (playerone.roundsWon < 2 && playertwo.roundsWon < 2)
             {
+                DisplayGameRules();
                 DisplayChoices();
-                CompareChoices(playerone.SelectChoice(),
-                playertwo.SelectChoice());
+                Console.WriteLine("{0}'s Turn.", playerone.name);
+                tempChoice1 = playerone.SelectChoice();
+                Console.WriteLine("{0}'s Turn.", playertwo.name);
+                tempChoice2 = playertwo.SelectChoice();
+                
+                CompareChoices(tempChoice1, tempChoice2);
                 CheckForWinner();
             }
             DisplayWinnerMessage();
