@@ -102,7 +102,16 @@ namespace RPSLS
         }
         public int GetUserInput()
         {
-            return Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                return Convert.ToInt32(Console.ReadLine());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error: {0} Enter an Integer.", e);
+                return GetUserInput();
+            }
+            
         }
 
         public void CheckForWinner()
