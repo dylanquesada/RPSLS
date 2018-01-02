@@ -13,7 +13,7 @@ namespace RPSLS
         public Player playerone;
         public Player playertwo;
         //(Rock, Paper, Scissors, Lizard, Spock)
-        public int numberOfChoices = 5;
+        
         //Maybe change this to choices.Length?
         
         // constructor 
@@ -56,14 +56,11 @@ namespace RPSLS
         }
         public void PopulateChoicesList()
         {
-            
             choices.Add("Rock");
             choices.Add("Paper");
             choices.Add("Scissors");
             choices.Add("Spock");
-            choices.Add("Lizard");
-            
-
+            choices.Add("Lizard"); 
         }
         public void DisplayGameRules()
         {
@@ -81,7 +78,7 @@ namespace RPSLS
             int playerOneChoice = choice1;
             int playerTwoChoice = choice2;
             int indicator;
-            indicator = ((numberOfChoices + (playerOneChoice - playerTwoChoice)) % numberOfChoices);
+            indicator = ((choices.Count + (playerOneChoice - playerTwoChoice)) % choices.Count);
 
             if (indicator == 0)
             {

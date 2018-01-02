@@ -29,7 +29,7 @@ namespace RPSLS
             }
             catch(Exception e)
             {
-                Console.WriteLine("Error. Invalid Input. Please enter an integer '0 - 4'");
+                Console.WriteLine("Error: '{0}' Invalid Input. Please enter an integer '0 - 4'", e);
                 return SelectChoice();
             }
 
